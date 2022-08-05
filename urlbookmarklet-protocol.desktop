@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=urlbookmarklet-protocol
+Exec=/usr/bin/python3 /home/<USER>/bin/http_url_handler.py %u
+Type=Application
+Terminal=false
+Categories=System;
+MimeType=x-scheme-handler/urlbookmarklet-protocol;
