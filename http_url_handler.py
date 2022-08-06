@@ -7,6 +7,7 @@ arg_url = sys.argv[1]
 browsers = {
     'firefox': '/usr/bin/firefox',
     'ffbeta': '/usr/bin/firefox-beta',
+    'ffdev': '/usr/bin/firefox-developer-edition',
     'gchromium': '/usr/bin/chromium',
     'gchrome': '/usr/bin/google-chrome-stable',
     'msedgebeta': '/usr/bin/microsoft-edge-beta',
@@ -18,6 +19,7 @@ pattern_protocol = 'urlbookmarklet-protocol://'
 input_url = arg_url.replace(pattern_protocol, '')
 
 pattern_ffbeta = '_______ffbeta'
+pattern_ffdev = '_______ffdev'
 pattern_chromium = '_______gchromium'
 pattern_chrome = '_______gchrome'
 pattern_msedgebeta = '_______msedgebeta'
@@ -27,6 +29,9 @@ pattern_librewolf = '_______librewolf'
 if input_url.endswith(pattern_ffbeta):
     browser = browsers['ffbeta']
     url = input_url.replace(pattern_ffbeta, '')
+elif input_url.endswith(pattern_ffdev):
+    browser = browsers['ffdev']
+    url = input_url.replace(pattern_ffdev, '')
 elif input_url.endswith(pattern_chromium):
     browser = browsers['gchromium']
     url = input_url.replace(pattern_chromium, '')
