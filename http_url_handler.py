@@ -5,7 +5,7 @@ arg_url = sys.argv[1]
 # print(arg_url)
 
 browsers = {
-    'firefox': '/usr/bin/firefox',
+    'ffstable': '/usr/bin/firefox',
     'ffbeta': '/usr/bin/firefox-beta',
     'ffdev': '/usr/bin/firefox-developer-edition',
     'gchromium': '/usr/bin/chromium',
@@ -18,6 +18,7 @@ browsers = {
 pattern_protocol = 'urlbookmarklet-protocol://'
 input_url = arg_url.replace(pattern_protocol, '')
 
+pattern_ffstable = '_______ffstable'
 pattern_ffbeta = '_______ffbeta'
 pattern_ffdev = '_______ffdev'
 pattern_chromium = '_______gchromium'
@@ -26,7 +27,10 @@ pattern_msedgebeta = '_______msedgebeta'
 pattern_vivaldi = '_______vivaldi'
 pattern_librewolf = '_______librewolf'
 
-if input_url.endswith(pattern_ffbeta):
+if input_url.endswith(pattern_ffstable):
+    browser = browsers['ffstable']
+    url = input_url.replace(pattern_ffstable, '')
+elif input_url.endswith(pattern_ffbeta):
     browser = browsers['ffbeta']
     url = input_url.replace(pattern_ffbeta, '')
 elif input_url.endswith(pattern_ffdev):
@@ -48,7 +52,7 @@ elif input_url.endswith(pattern_librewolf):
     browser = browsers['librewolf']
     url = input_url.replace(pattern_librewolf, '')
 else:
-    browser = browsers['firefox']
+    browser = browsers['ffstable']
     url = input_url
 
 cmd = browser + ' ' + url

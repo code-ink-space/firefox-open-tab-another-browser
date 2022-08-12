@@ -16,7 +16,7 @@ Requirements:
 $ chmod +x ~/bin/http_url_handler.py
 ---
 browsers = {
-    'firefox': '/usr/bin/firefox',
+    'ffstable': '/usr/bin/firefox',
     'ffbeta': '/usr/bin/firefox-beta',
     'ffdev': '/usr/bin/firefox-developer-edition',
     'gchromium': '/usr/bin/chromium',
@@ -68,6 +68,7 @@ $ xdg-open https://en.wikipedia.org/_______ffbeta
 ## 5. Add bookmarklets to Firefox: import `ff_bookmarklets.html`
 - move folder to Bookmarks Toolbar for easy access
 ```
+javascript:location.href='urlbookmarklet-protocol://'+location.href+'_______ffstable
 javascript:location.href='urlbookmarklet-protocol://'+location.href+'_______ffbeta'
 javascript:location.href='urlbookmarklet-protocol://'+location.href+'_______ffdev'
 javascript:location.href='urlbookmarklet-protocol://'+location.href+'_______gchromium'
