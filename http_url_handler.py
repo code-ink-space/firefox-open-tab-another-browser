@@ -27,6 +27,10 @@ pattern_msedgebeta = '_______msedgebeta'
 pattern_vivaldi = '_______vivaldi'
 pattern_librewolf = '_______librewolf'
 
+snippet = False
+pattern_triliumlog = '_______triliumlog'
+pattern_triliumquote = '_______triliumquote'
+
 if input_url.endswith(pattern_ffstable):
     browser = browsers['ffstable']
     url = input_url.replace(pattern_ffstable, '')
@@ -51,11 +55,21 @@ elif input_url.endswith(pattern_vivaldi):
 elif input_url.endswith(pattern_librewolf):
     browser = browsers['librewolf']
     url = input_url.replace(pattern_librewolf, '')
+elif input_url.endswith(pattern_triliumlog):
+    snippet = input_url.replace(pattern_triliumlog, '')
+    runscript = 'python3 /YOUR/SCRIPT/PATH/trilium-etapi-linklogger.py'
+elif input_url.endswith(pattern_triliumquote):
+    snippet = input_url.replace(pattern_triliumquote, '')
+    runscript = 'python3 /YOUR/SCRIPT/PATH/trilium-etapi-quotecollector.py'
 else:
     browser = browsers['ffstable']
     url = input_url
 
-cmd = browser + ' ' + url
+if snippet:
+    snippet = snippet.replace('%20', ' ')
+    cmd = runscript + ' "' + snippet + '"'
+else:
+    cmd = browser + ' ' + url
 
 # print(cmd)
 os.system(cmd)
